@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+hikari:
+  maximum-pool-size: 10
+  minimum-idle: 5
+  idle-timeout: 150000
+  connection-timeout: 15000
+  max-lifetime: 1200000
+
+spring:
+  application:
+    name: security
+  jpa:
+    database: POSTGRESQL
+    show-sql: on
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+  jmx:
+    enabled: false
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:3300/security
+    username: postgres
+    password: root
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
